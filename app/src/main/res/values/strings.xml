@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Recipe App</string>
+    <string name="recipe_title">Recipe Title</string>
+    <string name="description">Description</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="save_recipe">Save Recipe</string>
+    <string name="activity_add_title">Add New Recipe</string>
+    <string name="title_required">Title is required</string>
+    <string name="description_required">Description is required</string>
+    <string name="ingredients_required">Ingredients are required</string>
+    <string name="successfully">Recipe saved successfully</string>
+    <string name="error">Error saving recipe</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm_delete">Confirm Delete</string>
+    <string name="sure">Are You Sure To Delete Recipe</string>
+    <string name="question_mark">?</string>
+    <string name="remove_done">Removed Success</string>
+    <string name="remove_fail">Remove Failed</string>
+
+
+</resources>

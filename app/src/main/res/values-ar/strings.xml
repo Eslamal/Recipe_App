@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">تظبيق وصفات</string>
+    <string name="recipe_title">عنوان الوصفة</string>
+    <string name="description">الوصف</string>
+    <string name="ingredients">المكونات</string>
+    <string name="save_recipe">حفظ الوصفة</string>
+    <string name="activity_add_title">اضافة وصفة جديدة</string>
+    <string name="title_required">العنوان مطلوب</string>
+    <string name="description_required">الوصف مطلوب</string>
+    <string name="ingredients_required">المكونات مطلوبة</string>
+    <string name="successfully">تم حفظ الوصفة بنجاح</string>
+    <string name="error">حدث خطأ اثناء حفظ الوصفة</string>
+    <string name="edit">تعديل</string>
+    <string name="delete">حذف</string>
+    <string name="cancel">الغاء</string>
+    <string name="confirm_delete">تأكيد الحذف</string>
+    <string name="sure">هل انت متأكد من حذف الوصفة</string>
+    <string name="question_mark">؟</string>
+    <string name="remove_done">تم الحذف بنجاح</string>
+    <string name="remove_fail">لم يتم الحذف</string>
+
+
+
+</resources>
