@@ -14,16 +14,23 @@
         android:layout_height="wrap_content"
         android:hint="@string/recipe_title"
         android:inputType="textCapWords"
-        tools:ignore="Autofill,TouchTargetSizeCheck" />
+        android:background="@drawable/rounded_edittext"
+        android:padding="10dp"
+        tools:ignore="Autofill,TouchTargetSizeCheck"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="40dp"/>
 
     <EditText
         android:id="@+id/editTextDescription"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_marginTop="8dp"
         android:hint="@string/description"
         android:inputType="textMultiLine"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:background="@drawable/rounded_edittext"
+        android:padding="10dp"
+        android:layout_marginBottom="40dp"/>
 
     <EditText
         android:id="@+id/editTextIngredients"
@@ -32,16 +39,21 @@
         android:layout_marginTop="8dp"
         android:hint="@string/ingredients"
         android:inputType="textMultiLine"
-        tools:ignore="TouchTargetSizeCheck" />
+        tools:ignore="TouchTargetSizeCheck"
+        android:background="@drawable/rounded_edittext"
+        android:padding="10dp"
+        android:layout_marginBottom="40dp"/>
 
     <!-- Add more fields if needed, e.g., for instructions -->
 
     <Button
+        android:background="@drawable/rounded_red_button"
         android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
-        android:text="@string/save_recipe" />
+        android:text="@string/save_recipe"
+        />
 
 </LinearLayout>

@@ -18,6 +18,7 @@ public class AddEditRecipeActivity extends AppCompatActivity {
     private EditText editTextIngredients;
     private Button buttonSave;
     private RecipeDbHelper dbHelper;
+    private int recipeId = -1; // Default to -1, meaning no recipe is selected for editing
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +32,20 @@ public class AddEditRecipeActivity extends AppCompatActivity {
         buttonSave = findViewById(R.id.buttonSave);
         dbHelper = new RecipeDbHelper(this);
 
+        // Get the passed Recipe object from Intent
+        Intent intent = getIntent();
+        Recipe recipe = (Recipe) intent.getSerializableExtra("EDIT_RECIPE");
+
+        if (recipe != null) {
+            // Fill the EditTexts with current data
+            editTextTitle.setText(recipe.getTitle());
+            editTextDescription.setText(recipe.getDescription());
+            editTextIngredients.setText(recipe.getIngredients());
+        }
+
         // Set title and back button
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(R.string.activity_add_title);
+            getSupportActionBar().setTitle(recipe != null ? R.string.activity_edit_title : R.string.activity_add_title);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
@@ -41,12 +53,12 @@ public class AddEditRecipeActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveRecipe();
+                saveRecipe(recipe);  // Pass the recipe to save method
             }
         });
     }
 
-    private void saveRecipe() {
+    private void saveRecipe(Recipe recipe) {
         // Get input values
         String title = editTextTitle.getText().toString().trim();
         String description = editTextDescription.getText().toString().trim();
@@ -71,21 +83,33 @@ public class AddEditRecipeActivity extends AppCompatActivity {
             return;
         }
 
-        // Create a new Recipe object
-        Recipe newRecipe = new Recipe(title, description, ingredients);
+        // Set the fields of the recipe object before updating or adding it
+        recipe.setTitle(title);
+        recipe.setDescription(description);
+        recipe.setIngredients(ingredients);
 
-        // Save the recipe to the database
-        long result = dbHelper.addRecipe(newRecipe);
-
-        if (result != -1) {
-            Toast.makeText(this, R.string.successfully, Toast.LENGTH_SHORT).show();
-            // Set result to OK to notify MainActivity to refresh the list
-            setResult(RESULT_OK);
-            finish(); // Close the activity
+        // Update or add the recipe
+        if (recipe.getId() != -1) {
+            int result = dbHelper.updateRecipe(recipe);
+            if (result > 0) {
+                Toast.makeText(this, R.string.successfully, Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, R.string.error, Toast.LENGTH_SHORT).show();
+            }
         } else {
-            Toast.makeText(this, R.string.error, Toast.LENGTH_SHORT).show();
+            long result = dbHelper.addRecipe(recipe);
+            if (result != -1) {
+                Toast.makeText(this, R.string.successfully, Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, R.string.error, Toast.LENGTH_SHORT).show();
+            }
         }
+
+        setResult(RESULT_OK);
+        finish();
     }
+
+
 
     // Handle the back button press in the action bar
     @Override

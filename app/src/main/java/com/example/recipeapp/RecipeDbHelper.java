@@ -14,7 +14,7 @@ import java.util.List;
 public class RecipeDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "recipes.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 4;
 
     // Table and column names
     public static final String TABLE_RECIPES = "recipes";
@@ -98,12 +98,11 @@ public class RecipeDbHelper extends SQLiteOpenHelper {
         values.put(COLUMN_DESCRIPTION, recipe.getDescription());
         values.put(COLUMN_INGREDIENTS, recipe.getIngredients());
 
-        // Update the row, returning the number of rows affected
-        int rowsAffected = db.update(TABLE_RECIPES, values, COLUMN_ID + " = ?",
-                new String[]{String.valueOf(recipe.getId())});
-        db.close();
-        return rowsAffected;
+        // Update the recipe where the ID matches
+        return db.update(TABLE_RECIPES, values, COLUMN_ID + " = ?", new String[]{String.valueOf(recipe.getId())});
     }
+
+
 
     // Delete a recipe
     public int deleteRecipe(long recipeId) {

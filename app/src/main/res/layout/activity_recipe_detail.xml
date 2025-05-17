@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".RecipeDetailActivity">
 
     <ScrollView
@@ -17,45 +16,87 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Recipe Title -->
             <TextView
                 android:id="@+id/detailTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:layout_marginBottom="30dp"/>
+                android:textColor="@color/primaryTextColor"
+                android:layout_marginBottom="24dp"
+                android:text="Recipe Title"
+                android:layout_marginTop="20dp"/>
+
+            <!-- Recipe Description Title -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="@string/description"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/detailDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textStyle="bold"
+                android:textColor="@color/secondaryTextColor"
                 android:layout_marginTop="8dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:layout_marginBottom="30dp"/>
+                android:layout_marginBottom="4dp"/>
 
+            <!-- Recipe Description -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="8dp"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="@color/cardBackgroundColor"
+                tools:ignore="ExtraText">
+
+                <TextView
+                    android:id="@+id/detailDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                    android:textColor="@color/primaryTextColor"
+                    android:layout_margin="8dp"
+                    android:text="This is the description of the recipe. It gives more details on how to prepare the recipe."
+                    android:lineSpacingExtra="4dp"
+                android:ellipsize="end"
+                android:maxLines="5"/>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Recipe Ingredients Title -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:text="@string/ingredients"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textStyle="bold" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                android:textStyle="bold"
+                android:textColor="@color/secondaryTextColor"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="4dp"/>
 
-            <TextView
-                android:id="@+id/detailIngredients"
+            <!-- Recipe Ingredients -->
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                app:cardCornerRadius="12dp"
+                app:cardElevation="8dp"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="@color/cardBackgroundColor">
+
+                <TextView
+                    android:id="@+id/detailIngredients"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                    android:textColor="@color/primaryTextColor"
+                    android:layout_margin="8dp"
+                    android:text="1. Dough\n2. Tomato Sauce\n3. Cheese"
+                    android:lineSpacingExtra="4dp"
+                    android:ellipsize="end"
+                    android:maxLines="5"/>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
